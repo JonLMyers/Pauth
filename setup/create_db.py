@@ -5,6 +5,7 @@ from config import SQLALCHEMY_MIGRATE_REPO
 from app import DB
 import os.path
 
+#What needs to be modified in the config?
 DB.create_all()
 if not os.path.exists(SQLALCHEMY_MIGRATE_REPO):
     api.create(SQLALCHEMY_MIGRATE_REPO, 'database repository')
