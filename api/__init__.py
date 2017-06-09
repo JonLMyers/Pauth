@@ -7,8 +7,9 @@ app = Flask(__name__)
 # Later we should useinstance-specific values (app.instance.config)
 app.config.from_pyfile(app.root_path + '/config.py')
 
-from api.models import db
+from api.models import db, sess
 db.init_app(app)
+sess.init_app(app)
 
 from api.Controllers.basic_auth_controller import basic_auth_controller
 app.register_blueprint(basic_auth_controller, url_prefix='/basic')
