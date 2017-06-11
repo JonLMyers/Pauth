@@ -7,9 +7,8 @@ services:
   - mysql
 
 before_install:
-  - mysql -e 'CREATE SCHEMA IF NOT EXISTS `user_authentication` DEFAULT CHARACTER SET utf8;'
-  - mysql -e 'USE `user_authentication`;'
-  - mysql -e 'CREATE TABLE IF NOT EXISTS users(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, username VARCHAR(30) NOT NULL, password_hash VARCHAR(256) NOT NULL, session_token VARCHAR(128));'
+  - mysql -e "CREATE DATABASE IF NOT EXISTS User_Authentication;"
+  - mysql -h "localhost" -u "travis" "User_Authentication" < "/setup/user_authentication_schema.sql"
 
 install:
   - "pip install -r requirements.txt"
